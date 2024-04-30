@@ -72,8 +72,7 @@ public class CommentController {
     }
 
     @DeleteMapping
-    public ResponseEntity<?> deleteComment(@RequestBody CommentIdPayload payload) {
-        int commentID = payload.getCommentID();
+    public ResponseEntity<?> deleteComment(@RequestParam("commentID") int commentID) {
         boolean success = commentService.deleteComment(commentID);
         if (!success) {
             ReturnsError e = new ReturnsError("Comment does not exist");
